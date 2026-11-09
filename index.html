@@ -3,8 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="AVEN Clipping Agency — short-form clipping and content distribution for creators and brands." />
   <title>AVEN — Clipping Agency</title>
+  <meta name="description" content="AVEN Clipping Agency — short-form clipping, content distribution, and monthly retainers for creators and brands. Free sample clips available." />
+  <meta name="theme-color" content="#0b0d10" />
+  <link rel="canonical" href="https://michy1001.github.io/aven/" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://michy1001.github.io/aven/" />
+  <meta property="og:title" content="AVEN — Clipping Agency" />
+  <meta property="og:description" content="Short-form clipping and content distribution for TikTok, Shorts, and Reels. Free 2–3 sample clips." />
+  <meta property="og:site_name" content="AVEN Clipping Agency" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="AVEN — Clipping Agency" />
+  <meta name="twitter:description" content="Short-form clipping and content distribution for creators and brands. Free sample clips." />
+
   <style>
     :root {
       --bg: #0b0d10;
@@ -17,151 +31,280 @@
       --accent2: #7c5cff;
       --ok: #3dd68c;
       --radius: 14px;
-      --max: 960px;
+      --max: 980px;
+      --header-h: 64px;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.55;
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
     .wrap { width: min(100% - 2rem, var(--max)); margin-inline: auto; }
+
+    /* Header */
     header {
-      position: sticky; top: 0; z-index: 20;
-      backdrop-filter: blur(10px);
-      background: rgba(11,13,16,.85);
+      position: sticky; top: 0; z-index: 40;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(11,13,16,.88);
       border-bottom: 1px solid var(--border);
     }
     .nav {
       display: flex; align-items: center; justify-content: space-between;
-      padding: .9rem 0; gap: 1rem;
+      min-height: var(--header-h); gap: 1rem;
     }
     .logo {
-      font-weight: 800; letter-spacing: .04em; font-size: 1.05rem;
+      font-weight: 800; letter-spacing: .06em; font-size: 1.05rem;
+      color: var(--text); text-decoration: none !important;
     }
     .logo span { color: var(--accent); }
-    .nav-links { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .nav-links a { color: var(--muted); font-size: .92rem; }
-    .nav-links a:hover { color: var(--text); text-decoration: none; }
+    .nav-right { display: flex; align-items: center; gap: .75rem; }
+    .nav-links { display: flex; gap: 1.15rem; align-items: center; }
+    .nav-links a {
+      color: var(--muted); font-size: .9rem; font-weight: 500;
+      text-decoration: none !important;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    .menu-btn {
+      display: none; width: 40px; height: 40px;
+      border: 1px solid var(--border); border-radius: 10px;
+      background: transparent; color: var(--text); cursor: pointer;
+      align-items: center; justify-content: center;
+    }
+    .menu-btn:hover { border-color: var(--accent); }
+    .menu-btn svg { width: 20px; height: 20px; }
+
+    .mobile-nav {
+      display: none; flex-direction: column; gap: .15rem;
+      padding: 0 0 1rem; border-top: 1px solid transparent;
+    }
+    .mobile-nav.open {
+      display: flex; border-top-color: var(--border); padding-top: .75rem;
+    }
+    .mobile-nav a {
+      color: var(--muted); font-size: .98rem; font-weight: 500;
+      padding: .7rem .4rem; text-decoration: none !important;
+      border-radius: 8px;
+    }
+    .mobile-nav a:hover { color: var(--text); background: rgba(255,255,255,.03); }
+
+    /* Buttons */
     .btn {
       display: inline-flex; align-items: center; justify-content: center;
-      gap: .45rem; padding: .75rem 1.15rem; border-radius: 999px;
-      border: 1px solid transparent; font-weight: 650; font-size: .95rem;
+      gap: .45rem; padding: .72rem 1.2rem; border-radius: 999px;
+      border: 1px solid transparent; font-weight: 650; font-size: .92rem;
       cursor: pointer; text-decoration: none !important;
+      transition: border-color .15s ease, transform .15s ease, opacity .15s ease;
+      white-space: nowrap;
     }
+    .btn:active { transform: scale(.98); }
     .btn-primary {
       background: linear-gradient(135deg, var(--accent), var(--accent2));
       color: #fff;
     }
+    .btn-primary:hover { opacity: .92; }
     .btn-ghost {
       background: transparent; border-color: var(--border); color: var(--text);
     }
     .btn-ghost:hover { border-color: var(--accent); }
+    .btn-sm { padding: .55rem 1rem; font-size: .86rem; }
+
+    /* Hero */
     .hero {
-      padding: 4.5rem 0 3.2rem;
+      padding: 4.25rem 0 3.5rem;
       background:
-        radial-gradient(700px 320px at 15% -10%, rgba(91,140,255,.22), transparent 60%),
-        radial-gradient(500px 280px at 90% 10%, rgba(124,92,255,.16), transparent 55%);
+        radial-gradient(680px 300px at 12% -8%, rgba(91,140,255,.22), transparent 60%),
+        radial-gradient(480px 260px at 92% 8%, rgba(124,92,255,.15), transparent 55%);
     }
     .hero h1 {
-      font-size: clamp(1.9rem, 5vw, 3rem);
-      line-height: 1.12; letter-spacing: -.02em; max-width: 16ch;
-      margin-bottom: 1rem;
+      font-size: clamp(1.85rem, 5vw, 2.85rem);
+      line-height: 1.12; letter-spacing: -.025em;
+      max-width: 15ch; margin-bottom: 1rem; font-weight: 800;
     }
     .hero p.lead {
-      color: var(--muted); font-size: 1.08rem; max-width: 42ch; margin-bottom: 1.6rem;
+      color: var(--muted); font-size: 1.05rem; max-width: 44ch;
+      margin-bottom: 1.75rem; line-height: 1.65;
     }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .7rem; }
     .pill {
-      display: inline-flex; align-items: center; gap: .4rem;
-      margin-top: 1.4rem; color: var(--muted); font-size: .88rem;
-      border: 1px solid var(--border); border-radius: 999px; padding: .35rem .75rem;
-      background: rgba(23,28,36,.6);
+      display: inline-flex; align-items: center; gap: .45rem;
+      margin-top: 1.5rem; color: var(--muted); font-size: .86rem;
+      border: 1px solid var(--border); border-radius: 999px;
+      padding: .4rem .85rem; background: rgba(23,28,36,.55);
     }
-    .dot { width: .55rem; height: .55rem; border-radius: 50%; background: var(--ok); }
-    section { padding: 3.2rem 0; }
-    section.alt { background: var(--bg2); border-block: 1px solid var(--border); }
+    .dot {
+      width: .5rem; height: .5rem; border-radius: 50%;
+      background: var(--ok); flex-shrink: 0;
+      box-shadow: 0 0 0 3px rgba(61,214,140,.18);
+    }
+
+    /* Sections */
+    section { padding: 3.5rem 0; }
+    section.alt {
+      background: var(--bg2);
+      border-block: 1px solid var(--border);
+    }
     h2 {
-      font-size: clamp(1.35rem, 3vw, 1.85rem);
-      letter-spacing: -.015em; margin-bottom: .55rem;
+      font-size: clamp(1.3rem, 3vw, 1.75rem);
+      letter-spacing: -.02em; margin-bottom: .5rem; font-weight: 750;
     }
-    .section-lead { color: var(--muted); max-width: 55ch; margin-bottom: 1.6rem; }
+    .section-lead {
+      color: var(--muted); max-width: 52ch;
+      margin-bottom: 1.75rem; font-size: .98rem;
+    }
+
+    /* Cards / grid */
     .grid {
       display: grid; gap: 1rem;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
     }
     .card {
       background: var(--card); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 1.15rem 1.2rem;
+      border-radius: var(--radius); padding: 1.25rem 1.25rem;
+      height: 100%;
     }
-    .card h3 { font-size: 1.02rem; margin-bottom: .35rem; }
-    .card p { color: var(--muted); font-size: .94rem; }
-    .niche-list { display: grid; gap: .7rem; }
+    .card h3 { font-size: 1.02rem; margin-bottom: .4rem; font-weight: 700; }
+    .card p { color: var(--muted); font-size: .93rem; line-height: 1.55; }
+
+    /* Niches */
+    .niche-list { display: grid; gap: .65rem; }
     .niche {
-      display: grid; grid-template-columns: 9.5rem 1fr; gap: .75rem;
-      align-items: start; padding: .85rem 1rem;
+      display: grid; grid-template-columns: 10rem 1fr; gap: .85rem;
+      align-items: start; padding: .9rem 1.1rem;
       background: var(--card); border: 1px solid var(--border); border-radius: 12px;
     }
-    .niche strong { font-size: .92rem; }
-    .niche span { color: var(--muted); font-size: .92rem; }
-    .steps { display: grid; gap: 1rem; counter-reset: step; }
+    .niche strong { font-size: .92rem; font-weight: 700; }
+    .niche span { color: var(--muted); font-size: .92rem; line-height: 1.5; }
+
+    /* Steps */
+    .steps { display: grid; gap: .9rem; counter-reset: step; }
     .step {
-      position: relative; padding: 1.1rem 1.15rem 1.1rem 3.4rem;
-      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+      position: relative; padding: 1.15rem 1.2rem 1.15rem 3.5rem;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius);
     }
     .step::before {
       counter-increment: step; content: counter(step);
-      position: absolute; left: 1rem; top: 1.05rem;
+      position: absolute; left: 1.05rem; top: 1.15rem;
       width: 1.7rem; height: 1.7rem; border-radius: 50%;
       display: grid; place-items: center;
       background: rgba(91,140,255,.18); color: var(--accent);
-      font-weight: 700; font-size: .9rem;
+      font-weight: 700; font-size: .88rem;
     }
-    .step h3 { font-size: 1rem; margin-bottom: .25rem; }
-    .step p { color: var(--muted); font-size: .94rem; }
+    .step h3 { font-size: 1rem; margin-bottom: .3rem; font-weight: 700; }
+    .step p { color: var(--muted); font-size: .93rem; }
+
+    /* CTA */
     .cta-box {
       background:
-        linear-gradient(160deg, rgba(91,140,255,.16), rgba(124,92,255,.08) 40%, transparent),
+        linear-gradient(160deg, rgba(91,140,255,.16), rgba(124,92,255,.07) 45%, transparent),
         var(--card);
-      border: 1px solid var(--border); border-radius: calc(var(--radius) + 4px);
-      padding: 1.6rem 1.4rem; text-align: center;
+      border: 1px solid var(--border);
+      border-radius: calc(var(--radius) + 4px);
+      padding: 2rem 1.5rem; text-align: center;
     }
-    .cta-box p { color: var(--muted); margin: .55rem auto 1.2rem; max-width: 42ch; }
-    .contact-row {
-      display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center;
+    .cta-box h2 { margin-bottom: .45rem; }
+    .cta-box p {
+      color: var(--muted); margin: 0 auto 1.35rem;
+      max-width: 44ch; font-size: .98rem;
     }
+    .cta-actions {
+      display: flex; flex-wrap: wrap; gap: .7rem; justify-content: center;
+    }
+
+    /* Community card */
+    .community-card {
+      display: flex; flex-wrap: wrap; gap: 1.15rem;
+      align-items: center; justify-content: space-between;
+    }
+    .community-card h3 { margin-bottom: .3rem; font-size: 1.02rem; }
+    .community-card p { color: var(--muted); font-size: .93rem; }
+
+    /* Contact */
+    .contact-grid {
+      display: grid; gap: .85rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      margin-bottom: 1.25rem;
+    }
+    .contact-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.15rem 1.2rem;
+    }
+    .contact-card h3 {
+      font-size: .78rem; text-transform: uppercase; letter-spacing: .06em;
+      color: var(--muted); font-weight: 650; margin-bottom: .45rem;
+    }
+    .contact-card a.main-link {
+      display: block; color: var(--text); font-weight: 650;
+      font-size: 1rem; text-decoration: none !important; margin-bottom: .35rem;
+    }
+    .contact-card a.main-link:hover { color: var(--accent); }
+    .contact-card p { color: var(--muted); font-size: .88rem; }
+    .social-row {
+      display: flex; flex-wrap: wrap; gap: .65rem;
+    }
+
+    /* Footer */
     footer {
-      padding: 2rem 0 2.6rem; color: var(--muted); font-size: .88rem;
+      padding: 2rem 0 2.4rem; color: var(--muted); font-size: .86rem;
       border-top: 1px solid var(--border);
     }
     footer .foot {
-      display: flex; flex-wrap: wrap; gap: .75rem 1.25rem;
+      display: flex; flex-wrap: wrap; gap: .75rem 1.5rem;
       justify-content: space-between; align-items: center;
     }
-    @media (max-width: 640px) {
+    footer .foot-links { display: flex; flex-wrap: wrap; gap: .85rem 1.15rem; }
+    footer .foot-links a {
+      color: var(--muted); text-decoration: none !important; font-size: .86rem;
+    }
+    footer .foot-links a:hover { color: var(--text); }
+
+    @media (max-width: 760px) {
       .nav-links { display: none; }
+      .menu-btn { display: inline-flex; }
       .niche { grid-template-columns: 1fr; gap: .2rem; }
-      .hero { padding-top: 3.2rem; }
+      .hero { padding: 3rem 0 2.75rem; }
+      section { padding: 2.75rem 0; }
+      .nav-right .btn { display: none; }
     }
   </style>
 </head>
-<body>
+<body id="top">
   <header>
-    <div class="wrap nav">
-      <div class="logo">AVEN <span>Clipping</span></div>
-      <nav class="nav-links" aria-label="Primary">
+    <div class="wrap">
+      <div class="nav">
+        <a class="logo" href="#top">AVEN <span>Clipping</span></a>
+        <div class="nav-right">
+          <nav class="nav-links" aria-label="Primary">
+            <a href="#services">Services</a>
+            <a href="#niches">Niches</a>
+            <a href="#how">How it works</a>
+            <a href="#community">Community</a>
+            <a href="#contact">Contact</a>
+          </nav>
+          <a class="btn btn-primary btn-sm" href="#free-test">Free test</a>
+          <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav" id="menuBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M4 7h16M4 12h16M4 17h16"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile">
         <a href="#services">Services</a>
         <a href="#niches">Niches</a>
         <a href="#how">How it works</a>
         <a href="#community">Community</a>
         <a href="#contact">Contact</a>
+        <a href="#free-test">Free test</a>
       </nav>
-      <a class="btn btn-primary" href="mailto:avenservice1@gmail.com?subject=Free%20test%20clips%20-%20AVEN">Free test</a>
     </div>
   </header>
 
@@ -169,10 +312,10 @@
     <section class="hero">
       <div class="wrap">
         <h1>We turn long-form into short-form that grows.</h1>
-        <p class="lead">AVEN is a clipping agency for creators and brands. We cut, caption, and distribute short-form clips built for TikTok, Shorts, and Reels. Monthly retainers available for ongoing clipping work.</p>
+        <p class="lead">AVEN is a clipping agency for creators and brands. We cut, caption, and distribute short-form clips for TikTok, YouTube Shorts, and Instagram Reels — with monthly retainers for ongoing work.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="mailto:avenservice1@gmail.com?subject=Free%20test%20clips%20-%20AVEN">Get a free test</a>
-          <a class="btn btn-ghost" href="https://wa.me/639922405648" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn btn-primary" href="#free-test">Get a free test</a>
+          <a class="btn btn-ghost" href="https://wa.me/639922405648?text=Hi%20AVEN%2C%20I%27m%20interested%20in%20clipping%20services." target="_blank" rel="noopener">WhatsApp</a>
           <a class="btn btn-ghost" href="https://discord.gg/zQ5CejWZEZ" target="_blank" rel="noopener">Join Discord</a>
         </div>
         <div class="pill"><span class="dot" aria-hidden="true"></span> Teen-run clipping agency · Philippines</div>
@@ -182,7 +325,7 @@
     <section id="services">
       <div class="wrap">
         <h2>Services</h2>
-        <p class="section-lead">Practical short-form work — editing, distribution, and building clipping teams around your content.</p>
+        <p class="section-lead">Practical short-form work — editing, distribution, clipping teams, and monthly retainers built around your content.</p>
         <div class="grid">
           <article class="card">
             <h3>Short-form clipping</h3>
@@ -190,7 +333,7 @@
           </article>
           <article class="card">
             <h3>Content distribution</h3>
-            <p>Campaign posting and promo pushes so clips reach new audiences across platforms, not just one channel.</p>
+            <p>Campaign posting and promo pushes so clips reach new audiences across platforms — not just one channel.</p>
           </article>
           <article class="card">
             <h3>Clipping teams</h3>
@@ -198,7 +341,7 @@
           </article>
           <article class="card">
             <h3>Monthly retainers</h3>
-            <p>Ongoing clipping on a monthly plan — consistent volume, clear delivery, and a team that learns your style. We can talk through scope on WhatsApp.</p>
+            <p>A set number of clips each month, posted on schedule, so you never have to think about short-form. Scope is set with you first.</p>
           </article>
         </div>
       </div>
@@ -206,8 +349,8 @@
 
     <section id="niches" class="alt">
       <div class="wrap">
-        <h2>Niches &amp; campaign types</h2>
-        <p class="section-lead">One approach does not fit every industry. We tailor clipping and distribution to the niche.</p>
+        <h2>Niches we work with</h2>
+        <p class="section-lead">We tailor clipping and distribution to the niche — one style does not fit every audience.</p>
         <div class="niche-list">
           <div class="niche"><strong>Personal brands</strong><span>Entrepreneurs, coaches, and public figures who need hooks that show expertise fast.</span></div>
           <div class="niche"><strong>Entertainment</strong><span>Movie promos, celebrity clips, and entertainment companies pushing trailers and appearances.</span></div>
@@ -246,7 +389,10 @@
         <div class="cta-box" id="free-test">
           <h2>Free test: 2–3 sample clips</h2>
           <p>Send us one piece of long-form content. We’ll cut 2–3 sample clips so you can see the quality before any paid work.</p>
-          <a class="btn btn-primary" href="mailto:avenservice1@gmail.com?subject=Free%20test%20clips%20-%20AVEN&body=Hi%20AVEN%2C%0A%0AI%27d%20like%20a%20free%20test%20of%202-3%20sample%20clips.%0A%0AContent%20link%3A%20%0APlatforms%20I%20care%20about%3A%20%0ANiche%3A%20%0A">Request free samples</a>
+          <div class="cta-actions">
+            <a class="btn btn-primary" href="mailto:avenservice1@gmail.com?subject=Free%20test%20clips%20-%20AVEN&amp;body=Hi%20AVEN%2C%0A%0AI%27d%20like%20a%20free%20test%20of%202-3%20sample%20clips.%0A%0AContent%20link%3A%20%0APlatforms%20I%20care%20about%3A%20%0ANiche%3A%20">Request free samples</a>
+            <a class="btn btn-ghost" href="https://wa.me/639922405648?text=Hi%20AVEN%2C%20I%27d%20like%20a%20free%20test%20of%202-3%20sample%20clips." target="_blank" rel="noopener">WhatsApp us</a>
+          </div>
         </div>
       </div>
     </section>
@@ -254,13 +400,13 @@
     <section id="community">
       <div class="wrap">
         <h2>Clipping community</h2>
-        <p class="section-lead">AVEN runs an active Discord for clippers and creators. It’s where we recruit, share briefs, and keep delivery moving.</p>
-        <div class="card" style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;">
+        <p class="section-lead">AVEN runs a Discord for clippers and creators — where we recruit, share briefs, and keep delivery moving.</p>
+        <div class="card community-card">
           <div>
-            <h3 style="margin-bottom:.35rem;">Join the AVEN Discord</h3>
-            <p style="color:var(--muted);font-size:.94rem;">Clippers, creators, and campaign chat in one place.</p>
+            <h3>Join the AVEN Discord</h3>
+            <p>Clippers, creators, and campaign chat in one place.</p>
           </div>
-          <a class="btn btn-ghost" href="https://discord.gg/zQ5CejWZEZ" target="_blank" rel="noopener">discord.gg/zQ5CejWZEZ</a>
+          <a class="btn btn-ghost" href="https://discord.gg/zQ5CejWZEZ" target="_blank" rel="noopener">Join Discord</a>
         </div>
       </div>
     </section>
@@ -268,13 +414,28 @@
     <section id="contact" class="alt">
       <div class="wrap">
         <h2>Contact</h2>
-        <p class="section-lead">WhatsApp or email for client work and retainer chats. Socials for updates and campaign posts.</p>
-        <div class="contact-row">
-          <a class="btn btn-primary" href="https://wa.me/639922405648" target="_blank" rel="noopener">WhatsApp +63 992 240 5648</a>
-          <a class="btn btn-ghost" href="mailto:avenservice1@gmail.com">avenservice1@gmail.com</a>
-          <a class="btn btn-ghost" href="https://x.com/avenservices1" target="_blank" rel="noopener">X @avenservices1</a>
-          <a class="btn btn-ghost" href="https://instagram.com/avenservice1" target="_blank" rel="noopener">IG @avenservice1</a>
-          <a class="btn btn-ghost" href="https://discord.gg/zQ5CejWZEZ" target="_blank" rel="noopener">Discord</a>
+        <p class="section-lead">Reach out for client work, free samples, or retainer chats. We reply on WhatsApp, email, and Discord.</p>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3>WhatsApp</h3>
+            <a class="main-link" href="https://wa.me/639922405648?text=Hi%20AVEN%2C%20I%27m%20interested%20in%20clipping%20services." target="_blank" rel="noopener">+63 992 240 5648</a>
+            <p>Fastest for client chats and retainers.</p>
+          </div>
+          <div class="contact-card">
+            <h3>Email</h3>
+            <a class="main-link" href="mailto:avenservice1@gmail.com?subject=AVEN%20inquiry">avenservice1@gmail.com</a>
+            <p>Send content links or briefs anytime.</p>
+          </div>
+          <div class="contact-card">
+            <h3>Discord</h3>
+            <a class="main-link" href="https://discord.gg/zQ5CejWZEZ" target="_blank" rel="noopener">discord.gg/zQ5CejWZEZ</a>
+            <p>Community for clippers and creators.</p>
+          </div>
+        </div>
+        <div class="social-row">
+          <a class="btn btn-ghost btn-sm" href="https://x.com/avenservices1" target="_blank" rel="noopener">X @avenservices1</a>
+          <a class="btn btn-ghost btn-sm" href="https://instagram.com/avenservice1" target="_blank" rel="noopener">IG @avenservice1</a>
+          <a class="btn btn-primary btn-sm" href="#free-test">Get a free test</a>
         </div>
       </div>
     </section>
@@ -283,9 +444,37 @@
   <footer>
     <div class="wrap foot">
       <div>© <span id="y"></span> AVEN Clipping Agency</div>
-      <div>Short-form clipping · Distribution · Monthly retainers</div>
+      <div class="foot-links">
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+        <a href="https://wa.me/639922405648?text=Hi%20AVEN%2C%20I%27m%20interested%20in%20clipping%20services." target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://discord.gg/zQ5CejWZEZ" target="_blank" rel="noopener">Discord</a>
+      </div>
     </div>
   </footer>
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    (function () {
+      var btn = document.getElementById('menuBtn');
+      var nav = document.getElementById('mobile-nav');
+      if (!btn || !nav) return;
+
+      btn.addEventListener('click', function () {
+        var open = nav.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      });
+
+      nav.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          nav.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+          btn.setAttribute('aria-label', 'Open menu');
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
