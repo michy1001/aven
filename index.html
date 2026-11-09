@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="AVEN Clipping Agency — short-form clipping and content distribution for creators and brands." />
+  <title>AVEN — Clipping Agency</title>
+  <style>
+    :root {
+      --bg: #0b0d10;
+      --bg2: #12161c;
+      --card: #171c24;
+      --border: #2a3340;
+      --text: #e8edf4;
+      --muted: #9aa7b8;
+      --accent: #5b8cff;
+      --accent2: #7c5cff;
+      --ok: #3dd68c;
+      --radius: 14px;
+      --max: 960px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { width: min(100% - 2rem, var(--max)); margin-inline: auto; }
+    header {
+      position: sticky; top: 0; z-index: 20;
+      backdrop-filter: blur(10px);
+      background: rgba(11,13,16,.85);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .9rem 0; gap: 1rem;
+    }
+    .logo {
+      font-weight: 800; letter-spacing: .04em; font-size: 1.05rem;
+    }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .nav-links a { color: var(--muted); font-size: .92rem; }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: .45rem; padding: .75rem 1.15rem; border-radius: 999px;
+      border: 1px solid transparent; font-weight: 650; font-size: .95rem;
+      cursor: pointer; text-decoration: none !important;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+    }
+    .btn-ghost {
+      background: transparent; border-color: var(--border); color: var(--text);
+    }
+    .btn-ghost:hover { border-color: var(--accent); }
+    .hero {
+      padding: 4.5rem 0 3.2rem;
+      background:
+        radial-gradient(700px 320px at 15% -10%, rgba(91,140,255,.22), transparent 60%),
+        radial-gradient(500px 280px at 90% 10%, rgba(124,92,255,.16), transparent 55%);
+    }
+    .hero h1 {
+      font-size: clamp(1.9rem, 5vw, 3rem);
+      line-height: 1.12; letter-spacing: -.02em; max-width: 16ch;
+      margin-bottom: 1rem;
+    }
+    .hero p.lead {
+      color: var(--muted); font-size: 1.08rem; max-width: 42ch; margin-bottom: 1.6rem;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+    .pill {
+      display: inline-flex; align-items: center; gap: .4rem;
+      margin-top: 1.4rem; color: var(--muted); font-size: .88rem;
+      border: 1px solid var(--border); border-radius: 999px; padding: .35rem .75rem;
+      background: rgba(23,28,36,.6);
+    }
+    .dot { width: .55rem; height: .55rem; border-radius: 50%; background: var(--ok); }
+    section { padding: 3.2rem 0; }
+    section.alt { background: var(--bg2); border-block: 1px solid var(--border); }
+    h2 {
+      font-size: clamp(1.35rem, 3vw, 1.85rem);
+      letter-spacing: -.015em; margin-bottom: .55rem;
+    }
+    .section-lead { color: var(--muted); max-width: 55ch; margin-bottom: 1.6rem; }
+    .grid {
+      display: grid; gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.15rem 1.2rem;
+    }
+    .card h3 { font-size: 1.02rem; margin-bottom: .35rem; }
+    .card p { color: var(--muted); font-size: .94rem; }
+    .niche-list { display: grid; gap: .7rem; }
+    .niche {
+      display: grid; grid-template-columns: 9.5rem 1fr; gap: .75rem;
+      align-items: start; padding: .85rem 1rem;
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    }
+    .niche strong { font-size: .92rem; }
+    .niche span { color: var(--muted); font-size: .92rem; }
+    .steps { display: grid; gap: 1rem; counter-reset: step; }
+    .step {
+      position: relative; padding: 1.1rem 1.15rem 1.1rem 3.4rem;
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+    }
+    .step::before {
+      counter-increment: step; content: counter(step);
+      position: absolute; left: 1rem; top: 1.05rem;
+      width: 1.7rem; height: 1.7rem; border-radius: 50%;
+      display: grid; place-items: center;
+      background: rgba(91,140,255,.18); color: var(--accent);
+      font-weight: 700; font-size: .9rem;
+    }
+    .step h3 { font-size: 1rem; margin-bottom: .25rem; }
+    .step p { color: var(--muted); font-size: .94rem; }
+    .cta-box {
+      background:
+        linear-gradient(160deg, rgba(91,140,255,.16), rgba(124,92,255,.08) 40%, transparent),
+        var(--card);
+      border: 1px solid var(--border); border-radius: calc(var(--radius) + 4px);
+      padding: 1.6rem 1.4rem; text-align: center;
+    }
+    .cta-box p { color: var(--muted); margin: .55rem auto 1.2rem; max-width: 42ch; }
+    .contact-row {
+      display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center;
+    }
+    footer {
+      padding: 2rem 0 2.6rem; color: var(--muted); font-size: .88rem;
+      border-top: 1px solid var(--border);
+    }
+    footer .foot {
+      display: flex; flex-wrap: wrap; gap: .75rem 1.25rem;
+      justify-content: space-between; align-items: center;
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .niche { grid-template-columns: 1fr; gap: .2rem; }
+      .hero { padding-top: 3.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="logo">AVEN <span>Clipping</span></div>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#services">Services</a>
+        <a href="#niches">Niches</a>
+        <a href="#how">How it works</a>
+        <a href="#community">Community</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="btn btn-primary" href="mailto:avenservice1@gmail.com?subject=Free%20test%20clips%20-%20AVEN">Free test</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <h1>We turn long-form into short-form that grows.</h1>
+        <p class="lead">AVEN is a clipping agency for creators and brands. We cut, caption, and distribute short-form clips built for TikTok, Shorts, and Reels. Monthly retainers available for ongoing clipping work.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="mailto:avenservice1@gmail.com?subject=Free%20test%20clips%20-%20AVEN">Get a free test</a>
+          <a class="btn btn-ghost" href="https://wa.me/639922405648" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn btn-ghost" href="https://discord.gg/zQ5CejWZEZ" target="_blank" rel="noopener">Join Discord</a>
+        </div>
+        <div class="pill"><span class="dot" aria-hidden="true"></span> Teen-run clipping agency · Philippines</div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="wrap">
+        <h2>Services</h2>
+        <p class="section-lead">Practical short-form work — editing, distribution, and building clipping teams around your content.</p>
+        <div class="grid">
+          <article class="card">
+            <h3>Short-form clipping</h3>
+            <p>We pull the strongest moments from podcasts, streams, interviews, and videos, then edit them for TikTok, YouTube Shorts, and Instagram Reels.</p>
+          </article>
+          <article class="card">
+            <h3>Content distribution</h3>
+            <p>Campaign posting and promo pushes so clips reach new audiences across platforms, not just one channel.</p>
+          </article>
+          <article class="card">
+            <h3>Clipping teams</h3>
+            <p>We assemble and manage clipper crews for creators and brands who need consistent volume and clear delivery.</p>
+          </article>
+          <article class="card">
+            <h3>Monthly retainers</h3>
+            <p>Ongoing clipping on a monthly plan — consistent volume, clear delivery, and a team that learns your style. We can talk through scope on WhatsApp.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="niches" class="alt">
+      <div class="wrap">
+        <h2>Niches &amp; campaign types</h2>
+        <p class="section-lead">One approach does not fit every industry. We tailor clipping and distribution to the niche.</p>
+        <div class="niche-list">
+          <div class="niche"><strong>Personal brands</strong><span>Entrepreneurs, coaches, and public figures who need hooks that show expertise fast.</span></div>
+          <div class="niche"><strong>Entertainment</strong><span>Movie promos, celebrity clips, and entertainment companies pushing trailers and appearances.</span></div>
+          <div class="niche"><strong>Podcasts</strong><span>Hosts and networks that want episode highlights cut into shareable clips.</span></div>
+          <div class="niche"><strong>Lifestyle</strong><span>Travel, fashion, beauty, fitness, and daily-life creators who need consistent short-form.</span></div>
+          <div class="niche"><strong>Sports</strong><span>Athletes, teams, and sports brands turning games, interviews, and highlights into clips.</span></div>
+          <div class="niche"><strong>Gaming</strong><span>Streamers, esports orgs, and gaming brands clipping VODs and community moments.</span></div>
+          <div class="niche"><strong>Music</strong><span>Artists and labels running release campaigns with short clips around new projects.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="wrap">
+        <h2>How it works</h2>
+        <p class="section-lead">Simple process. Clear deliverables. No jargon.</p>
+        <div class="steps">
+          <div class="step">
+            <h3>Send your content</h3>
+            <p>Share long-form videos, streams, podcasts, or brand assets — plus any style notes you already use.</p>
+          </div>
+          <div class="step">
+            <h3>We clip and post</h3>
+            <p>We edit vertical clips with captions and pacing built for short-form, then distribute them under the campaign plan.</p>
+          </div>
+          <div class="step">
+            <h3>You grow</h3>
+            <p>You get a steady stream of short-form content aimed at reach, retention, and new audience discovery.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="alt">
+      <div class="wrap">
+        <div class="cta-box" id="free-test">
+          <h2>Free test: 2–3 sample clips</h2>
+          <p>Send us one piece of long-form content. We’ll cut 2–3 sample clips so you can see the quality before any paid work.</p>
+          <a class="btn btn-primary" href="mailto:avenservice1@gmail.com?subject=Free%20test%20clips%20-%20AVEN&body=Hi%20AVEN%2C%0A%0AI%27d%20like%20a%20free%20test%20of%202-3%20sample%20clips.%0A%0AContent%20link%3A%20%0APlatforms%20I%20care%20about%3A%20%0ANiche%3A%20%0A">Request free samples</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="community">
+      <div class="wrap">
+        <h2>Clipping community</h2>
+        <p class="section-lead">AVEN runs an active Discord for clippers and creators. It’s where we recruit, share briefs, and keep delivery moving.</p>
+        <div class="card" style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;">
+          <div>
+            <h3 style="margin-bottom:.35rem;">Join the AVEN Discord</h3>
+            <p style="color:var(--muted);font-size:.94rem;">Clippers, creators, and campaign chat in one place.</p>
+          </div>
+          <a class="btn btn-ghost" href="https://discord.gg/zQ5CejWZEZ" target="_blank" rel="noopener">discord.gg/zQ5CejWZEZ</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="alt">
+      <div class="wrap">
+        <h2>Contact</h2>
+        <p class="section-lead">WhatsApp or email for client work and retainer chats. Socials for updates and campaign posts.</p>
+        <div class="contact-row">
+          <a class="btn btn-primary" href="https://wa.me/639922405648" target="_blank" rel="noopener">WhatsApp +63 992 240 5648</a>
+          <a class="btn btn-ghost" href="mailto:avenservice1@gmail.com">avenservice1@gmail.com</a>
+          <a class="btn btn-ghost" href="https://x.com/avenservices1" target="_blank" rel="noopener">X @avenservices1</a>
+          <a class="btn btn-ghost" href="https://instagram.com/avenservice1" target="_blank" rel="noopener">IG @avenservice1</a>
+          <a class="btn btn-ghost" href="https://discord.gg/zQ5CejWZEZ" target="_blank" rel="noopener">Discord</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <div>© <span id="y"></span> AVEN Clipping Agency</div>
+      <div>Short-form clipping · Distribution · Monthly retainers</div>
+    </div>
+  </footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
